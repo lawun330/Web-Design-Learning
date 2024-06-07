@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" type="text/css" href="technical-documentation-page.css">
+<div id="background">
+
+<nav id="navbar">
+	<header>
+		<h1>Line Follower Project</h1>
+	</header>
+	<ul>
+		<li><a href="#Introduction" class="nav-link">Introduction</a></li>
+		<li><a href="#Arduino_Uno" class="nav-link">Arduino Uno</a></li>
+		<li><a href="#L293D_Motor_Shield" class="nav-link">L293D Motor Shield</a></li>
+		<li><a href="#Circuit_Connection" class="nav-link">Circuit Connection</a></li>
+		<li><a href="#Yellow_Motors" class="nav-link">Yellow Motors</a></li>
+		<li><a href="#Infrared_Sensors" class="nav-link">Infrared Sensors</a></li>
+		<li><a href="#About" class="nav-link">About</a></li>
+	</ul>
+</nav>
+
+<main id="main-doc">
+	<body>
+	<section class="main-section" id="Introduction">
+		<header>Introduction</header>
+		<article>
+			<p>The line following car can track a black line on the plane surface and follow that black track. The project is designed for educational purposes. It is necessary to teach younger kids about technology and robotics engineering especially in such an underdeveloped country as <strong>Myanmar</strong>. It will be used as a learning aid and we hope it would provide the practical value of the S.T.E.M. education.</p>
+			<ul>
+				<li><p>The physical design is made through fusion 360 and 3D printing. It is not an open source so we will not provide any file for that.</p></li>
+				<li><p>For electronics and schematics, it will be shown under along with the codes.</p></li>
+			</ul>
+		</article>
+	</section>
+	<hr>
+	<section class="main-section" id="Arduino_Uno">
+		<header>Arduino Uno</header>
+		<article>
+			<p>The project is made with Arduino Uno and other necessary components. The code is written with Arduino IDE and the total cost is about $40. The microcontroller chip "ATmega328p" can also be used with custom PCB but because of time limitation and design efficiency, the Arduino board is chosen.</p>
+			<p>The advantages of using it will be- 
+				<ul>
+					<li><p>It is suitable with Motor Shield, thus making a compact design.</p></li>
+					<li><p>The Uno Board doesn't need external power source, it can draw power from Motor Shield.</p></li>
+					<li><p>The 13 digital pins and 6 analog pins are quite the amount of necessary pins.</p></li>
+				</ul>
+			</p>
+		</article>
+	</section>
+	<hr>
+	<section class="main-section" id="L293D_Motor_Shield">
+		<header>L293D Motor Shield</header>
+		<article>
+			<p>The Motor Shield can control 4 motors and 2 servos at its capacity.</p>
+			<p>The advantages of using it will be- 
+				<ul>
+					<li><p>Any kind of motor can be used: Unipolar, Bipolar, Stepper, Usual, etc. You name it.</p></li>
+					<li><p>It is user-friendly. All you need is to attach components to it.</p></li>
+				</ul>
+			</p>
+			<p>At the start of the code, you have to add the library.</p>
+			<code><span class="brown-color-code">#define</span> &lt;<span class="red-color-code">AFMotor.h</span>&gt;</code>
+			<p>The number of motors and the pulse frequency can be determined by</p>
+			<code><span class="red-color-code">AF_DCMotor</span> motor_name (2, MOTOR12_64KHZ);</code>
+		</article>
+	</section>
+	<hr>
+	<section class="main-section" id="Circuit_Connection">
+		<header>Circuit Connection</header>
+		<article>
+			<p>As in below, the Motor Shield is attached to Arduino Uno while the Infrared Sensor pins are attached to the analog pins.</p>
+			<div class="image"><img src="schematic.jpg" alt="A schematic diagram"></div>
+			<p>The motor pins are connected with motor wires. Battery Indicator Circuit is made to know the voltage of the battery without the need of manual testing. The battery should provide a voltage of 12V.</p>	
+		</article>
+	</section>
+	<hr>
+	<section class="main-section" id="Yellow_Motors">
+		<header>Yellow Motors</header>
+		<article>
+			<p>The two yellow motors have a total of four wires (two wires for each one). Each pair of two-wires is attached to M1 and M4 respectively. It operates between 3V - 9V, the recommendation is 6V. It has about 15RPM. It is easily available and cost efficient to use.</p>
+			<div class="image"><img src="https://www.wiltronics.com.au/wp-content/uploads/images/make-and-create/gear-motor-dc-toy-car-wheel-arduino.jpg" alt="Yellow Motor 3-12VDC 2 Flats Shaft"/></div>
+		</article>
+	</section>
+	<hr>
+	<section class="main-section" id="Infrared_Sensors">
+		<header>Infrared Sensors</header>
+		<article>
+			<p>We use 4 IR sensors: 2 for the detectation of black line, 2 for the white surface. The working voltage of infrared sensors is from 3.3V to 5V. It can detect the distance ranging from 2cm to 60cm. By adjusting the potentiomenter, that distance can be changed. </p>
+			<p>For the coding part, it is just normal input reading thing.</p>
+			<code><span class="blue-color-code">void</span> <span class="brown-color-code">setup</span>() {<br>&nbsp;&nbsp;<span class="red-color-code">pinMode</span>(infrared_sensor_pin, <span class="blue-color-code">INPUT</span>);<br>}</code>
+			<p>The sensor input can be analog or digital based on what your project aim is. The analog input can be used to measure distance while the digital input can be used for pure detectation.</p>
+			<code><span class="blue-color-code">void</span> <span class="brown-color-code">loop</span>() {<br>&nbsp;&nbsp;<span class="blue-color-code">int</span> sensor_value=<span class="red-color-code">analogRead</span>(infrared_sensor_pin);<br>}</code>
+			<p><center>OR</center></p>
+			<code><span class="blue-color-code">void</span> <span class="brown-color-code">loop</span>() {<br>&nbsp;&nbsp;<span class="blue-color-code">int</span> sensor_value=!<span class="red-color-code">digitalRead</span>(infrared_sensor_pin);<br>}</code>
+			<p><strong>NOTICE</strong> that digitalRead() function has an  "<strong>!</strong>" before it. It is because we are taking the inverse value of the input digital data. This is because the default digital input of the sensor is always "<strong>1</strong>" as long as it is not detecting any object and "<strong>0</strong>" when it detects an object. We want to inverse it so our code stays in its format.</p>
+		</article>
+	</section>
+	<hr>
+	<section class="main-section" id="About">
+		<header>About</header>
+		<p>The project is done by someone called "Sayar Duck G". To see full description of this project, please click on <a href="https://previews.123rf.com/images/pivden/pivden1603/pivden160300076/54777100-middle-finger-sign-by-male-hand-fuck-you-sign-and-text-vector-vintage-engraved-illustration-on-white.jpg" target="_blank" id="external-link">this link</a>.</p>
+	</section>
+	</body>
+	
+	<footer>
+		Copyright &copy 2022 by Sayar Duck G.	
+	</footer>
+</main>
+	<div class="animation-container">
+		<div class="emoji-background">
+			<div class="texts" id="text_1">Thank</div>
+			<div class="texts" id="text_2">You</div>
+			<div class="texts" id="text_3">For</div>
+			<div class="texts" id="text_4">Reading</div>
+  			<div class="face">
+  				<div class="left-eye"></div>
+  				<div class="left-eye-foreground"></div>
+  				<div class="right-eye"></div>
+  				<div class="right-eye-foreground"></div>
+  				<div class="left-cheek"></div>
+  				<div class="right-cheek"></div>
+ 				<div class="mouth"></div>
+  				<div class="mouth-background"></div>
+ 			</div>
+		</div>
+	</div>
+
+</div> <!-- background div -->
+</html>

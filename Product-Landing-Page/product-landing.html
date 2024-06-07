@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css" href="product-landing.css">
+<div class="background-container">
+
+<main>
+
+	<header id="header">
+		<div>
+			<img src="https://static.wikia.nocookie.net/mobile-legends/images/0/05/Moonton_logo2.png/revision/latest/scale-to-width-down/350?cb=20211017093503" srcset="https://static.wikia.nocookie.net/mobile-legends/images/0/05/Moonton_logo2.png/revision/latest/scale-to-width-down/350?cb=20211017093503 1x, https://static.wikia.nocookie.net/mobile-legends/images/0/05/Moonton_logo2.png/revision/latest/scale-to-width-down/700?cb=20211017093503 2x" width="270" height="56" alt="Moonton Logo" id="header-img">
+		</div>
+		<nav id="nav-bar">
+			<ul>
+				<li><a class="nav-link" href="#video-container">Watch</a></li>
+				<li><a class="nav-link" href="#package-choice">Package</a></li>
+				<li><a class="nav-link" href="#form">Form</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<div id="video-container">
+		<iframe id="video" src="https://youtube.com/embed/-iMaAisAMmM?si=VvM8RTr9-u_eqxEt" height="720" width="1080" frameborder="0" title="mlbb-stun-official-video" allowfullscreen></iframe>
+	</div>
+
+	<div class="title-container">
+		<h2 id="title">MLBB Ranking Up Service</h2>
+	</div>
+	
+	<div id="package-choice">
+		<label for="radioID1">
+			<input id="radioID1" class="radio_class" type="radio" name="package"></input>
+			<div class="package-box">
+				<div class="package-header" id="legend">Legend</div>
+				<h2 class="price">50000 Ks</h2>
+				<ul class="list">
+					<li>Master rank or above required</li>
+					<li>It could take up to three months</li>
+					<li>No participation in any events</li>
+				</ul>
+			</div>
+		</label>
+		<label for="radioID2">
+			<input id="radioID2" class="radio_class" type="radio" name="package"></input>
+			<div class="package-box">
+				<div class="package-header" id="mythic">Mythic</div>
+				<h2 class="price">150000 Ks</h2>
+				<ul class="list">
+					<li>No prior rank required</li>
+					<li>It could take up to two months</li>
+					<li>Participation in events</li>
+				</ul>
+			</div>
+		</label>
+		<label for="radioID3">
+			<input id="radioID3" class="radio_class" type="radio" name="package"></input>
+			<div class="package-box">
+				<div class="package-header" id="mythical-glory">Mythical Glory</div>
+				<h2 class="price">200000 Ks</h2>
+				<ul class="list">
+					<li>No prior rank required</li>
+					<li>It could take up to three weeks</li>
+					<li>Participation in events</li>
+				</ul>
+			</div>
+		</label>
+	</div>
+
+	<div class="form-container">
+	<form id="form" action="https://www.freecodecamp.com/email-submit">
+		<div class="requirements">
+			<label for="mlbb-id">Id:
+			<input type="text" pattern="[0-9()]{7,}" name="mlbb-id" id="mlbb-id" placeholder="Eg. 1234567(1234)" required></input></label>
+			<label for="email">Email:
+			<input type="email" name="email" id="email" placeholder="Enter your email" required></input></label>
+		</div>
+		<button type="submit" name="submit" id="submit">Submit</button>
+	</form>
+	</div>
+
+	<footer>
+		<p>Copyright &copy 2022 by Sayar Duck G.</p>
+	</footer>
+</main>
+
+</div>
+</html>
+
+

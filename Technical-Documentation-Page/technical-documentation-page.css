@@ -1,0 +1,345 @@
+/*there is one error to solve which is to maintain the animation. It has something to do with float*/
+
+@import url('https://fonts.googleapis.com/css2?family=Hubballi&display=swap');
+
+#background  {
+	position: fixed;
+	background-color: #ccc;
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+	z-index: -1;
+	overflow-y: auto; /*scroll for main documentation*/
+	overflow-x: hidden;
+}
+
+#navbar {
+	font-family: 'Hubballi', sans-serif;
+	position: fixed;
+	height: 100%;
+	width: 300px;
+	min-width: 250px;
+	top: 0;
+	left: 0;
+	border-right: solid;
+	border-color: rgba(229, 39, 90, 1);
+}
+
+#navbar h1 {
+	background: rgba(229, 39, 90, 1);
+	vertical-align: middle;
+	display: flex;
+	justify-content: center;
+	padding: 20px 0 20px 0;
+	margin: 0 0 0 0;
+}
+
+#navbar ul {
+	margin-top: 0;
+	margin-left: 0;
+	padding-left: 0;
+	border-left: 6px solid #27e585; /*creates a green border at left*/
+	list-style-type: none; /*remove the bullets*/
+	line-height: 60px;
+	overflow-y: auto; /*scroll for nav-bar*/
+	overflow-x: hidden;
+}
+
+#navbar li {
+	border-bottom: 1px solid white; /*each list index should be separated*/
+	background-color: black;
+	padding-left: 10px; /*creates a little space between characters and green border*/
+}
+
+#navbar a {
+/*display is set to block so that even hovering on the space 
+without characters will redirect internal links*/
+	display: block;
+	text-decoration: none; /*unline*/
+	color: #fff;
+}
+
+#navbar li:hover {
+	background-color: #333333;
+}
+
+/*it represents the background of main section*/
+#main-doc {
+	position: absolute;
+	margin-left: 310px;
+	margin-top: 0px;
+	margin-bottom: 100px;
+}
+
+.main-section {
+	font-family: "Hubballi", sans-serif;
+	font-size: 20px;
+	line-height: 1.5;
+}
+
+.main-section header {
+	font-size: 32px;
+}
+
+/*the block of code*/
+code {
+	display:  block;
+	position: relative;
+	background-color: white;
+	color: black;
+	word-break: normal;
+	word-wrap: normal;
+	font-size: 15px;
+	border-radius: 5px;
+	padding-left: 10px;
+	margin-left: 30px;
+}
+
+.brown-color-code {
+	color: rgba(183, 188, 111, 1);
+}
+
+.red-color-code {
+	color: red;
+}	
+
+.blue-color-code {
+	color: blue;
+}
+
+/*position images in the center*/
+.image {
+	display: flex;
+	justify-content: center;
+}
+
+img {
+	max-width: 80%;
+}
+
+/*navigate to external link*/
+#external-link:hover {
+	color: blue;
+}
+
+footer {
+	display: flex;
+  	justify-content: flex-end;
+  	align-items: center;
+	height: 50px;
+  	font-size: 0.9em;
+  	font-weight: bold;
+  	background-color: #565656;
+  	color: transparent;
+  	text-shadow: 2px 2px 3px rgba(255,255,255,0.5);
+    -webkit-background-clip: text;
+       -moz-background-clip: text;
+            background-clip: text;
+}
+
+/*adding emoji and texts animations on the bottom-left*/
+.animation-container * {
+    position: absolute;
+}
+
+.emoji-background {
+    position: fixed;
+    margin-top: 35.3%;
+    padding-top: 4px;
+    display: block;
+    height: 171px;
+    width: 300px;
+    background-color: rgba(229, 39, 90, 1);
+}
+
+/*adding texts*/
+.texts {
+	font-size: 20px;
+	font-weight: 400;
+	color: black;
+	opacity: 0%;
+	animation-name: rotate_animation;
+	animation-duration: 6s;
+	animation-iteration-count: infinite;
+}
+
+@keyframes rotate_animation {
+	50% {
+		opacity: 100%;
+		transform: rotate(360deg);
+	}
+}
+
+#text_1 {
+	margin-top: 10px;
+	margin-left: 10px;
+}
+
+#text_2 {
+	margin-top: 10px;
+	margin-left: 220px;
+}
+
+#text_3 {
+	margin-top: 140px;
+	margin-left: 10px;
+}
+
+#text_4 {
+	margin-top: 140px;
+	margin-left: 220px;
+}
+
+/*face should contains all components*/
+.face {
+	margin-top: 5px;
+	margin-left: 22%;
+    height: 160px;
+    width: 160px;
+    background-color: yellow;
+    border-radius: 50%
+}
+
+.face:hover {
+	background-color: white;
+	animation-name: rotate_animation;
+	animation-duration: 3s;
+	animation-iteration-count: infinite;
+}
+
+.left-eye {
+    top: 30%;
+    left: 23%;
+    background-color: black;
+    height: 25px;
+    width: 20px;
+    border-radius: 50%;
+}
+
+.right-eye {
+    top: 30%;
+    right: 23%;
+    background-color: black;
+    height: 25px;
+    width: 20px;
+    border-radius: 50%;
+}
+
+.left-eye-foreground {
+	top: 50%;
+    left: 24.5%;
+	background-color: inherit;
+    height: 5px;
+    width: 4px;
+    border-radius: 50%;
+    animation-name: smile_eyes;
+	animation-duration: 6s;
+	animation-iteration-count: infinite;
+}
+
+.right-eye-foreground {
+	top: 50%;
+    right: 24.5%;
+	background-color: inherit;
+    height: 5px;
+    width: 4px;
+	border-radius: 50%;	
+	animation-name: smile_eyes;
+	animation-duration: 6s;
+	animation-iteration-count: infinite;
+}
+
+@keyframes smile_eyes {
+	50% {
+		top: 40%;
+		height: 20px;
+    	width: 16px;
+	}
+}
+
+.mouth-background {
+	top: 49%;
+    right: 25%;
+    background-color: inherit;
+    height: 8.8px;
+    width: 80px;
+    border-radius: 0%;
+    animation-duration: 6s;
+    animation-name: smile_helper;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+  
+@keyframes smile_helper{
+	50% {
+		height: 24px;
+      	width: 120px;
+      	border-radius: 100%;
+    }
+}
+
+.mouth {
+    top: 54%;
+    right: 25%;
+    background-color: black;
+    height: 8.8px;    
+    width: 80px;
+    border-radius: 0%;
+    animation-duration: 6s;
+    animation-name: smile;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+@keyframes smile {
+    50% {
+    	top: 56%;
+      	right: 40%;
+      	border-radius: 100%;
+     	height: 24px; 
+      	width: 32px;
+    }
+}
+
+/*copied from original code at freecodecamp*/
+@media only screen and (max-width: 815px) {
+  /* For mobile phones: */
+  #navbar ul {
+    border: 1px solid;
+    height: 207px;
+  }
+
+  #navbar {
+    position: absolute;
+    top: 0;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    max-height: 275px;
+    border: none;
+    z-index: 1;
+    border-bottom: 2px solid;
+  }
+
+  #main-doc {
+    position: relative;
+    margin-left: 0px;
+    margin-top: 270px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  #main-doc {
+    margin-left: -10px;
+  }
+
+  code {
+    margin-left: -20px;
+    width: 100%;
+    padding: 15px;
+    padding-left: 10px;
+    padding-right: 45px;
+    min-width: 233px;
+  }
+}

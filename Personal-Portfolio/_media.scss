@@ -1,0 +1,203 @@
+@media screen and (max-width: 600px) {
+	.section {
+		padding: 2rem 2.5rem;
+	}
+
+	.main-title {
+		h2 {
+			font-size: 2rem;
+			span {
+				font-size: 2.5rem;
+			}
+			.bg-text {
+				font-size: 3rem;
+			}
+		}
+	}
+
+	.about-container {
+		grid-template-columns: 1fr;
+		.left-about-content {
+			padding-right: 0;
+			p {
+				padding-left: 0;	
+			}
+		}
+		.right-about-content {
+			grid-template-columns: 1fr;
+			padding-top: 2.5rem;
+		}
+	}
+
+	.timeline {
+		grid-template-columns: 1fr;
+		padding-bottom: 6rem;
+	}
+
+	.portfolios-container {
+		grid-template-columns: 1fr !important;
+		padding-bottom: 6rem;
+	}
+
+	.blogs-container {
+		grid-template-columns: 1fr !important;
+	}
+
+	.contact-container {
+		flex-direction: column;
+		.right-contact {
+			margin-top: 2.5rem;
+			margin-left: 0;
+			#input-control {
+				flex-direction: column;
+				:last-child {
+					margin-top: 1.5rem;
+					margin-left: 0;
+				}
+			}
+		}
+	}
+
+	.theme-button {
+		width: 50px;
+		height: 50px;
+	}
+}
+
+/////////////////////////////////////////////////////////////////////////////
+
+//My resolution is 1920 x 1080 but I use with 125% zoom so this can only be applied if there is a 100% zoom
+@media screen and (min-width: 1432px) {
+	header {
+		padding: 0 !important;
+	}
+
+	.section {
+		padding: 7rem 11rem;
+	}
+
+	.contact-container {
+		flex-direction: column;
+		.right-contact {
+			margin-top: 2.5rem;
+			margin-left: 0;
+			#input-control {
+				flex-direction: column;
+				:last-child {
+					margin-top: 1.5rem;
+					margin-left: 0;
+				}
+			}
+		}
+	}
+}
+
+/////////////////////////////////////////////////////////////////////////////
+
+@media screen and (max-width: 1070px) {
+	.main-title {
+		h2 {
+			font-size: 4rem;
+			span {
+				font-size: 4rem;
+			}
+		}
+		.bg-text {
+			font-size: 4.5rem;
+		}
+	}
+
+	.about-container {
+		grid-template-columns: 1fr;
+		.right-about-content {
+			padding-top: 2.5rem;
+		}
+	}
+
+	.portfolios-container {
+		grid-template-columns: 1fr 1fr;
+	} 
+
+	.blogs-container {
+		grid-template-columns: 1fr 1fr;		
+	}
+}
+
+/////////////////////////////////////////////////////////////////////////////
+
+@media screen and (max-width: 970px) {
+	header {
+		padding: 0;
+		overflow: auto;
+	}
+	header .right-header-content {
+		padding: 0 !important;
+	}
+
+	.header-content {
+		//grid is now 1 column with 2 rows 
+		grid-template-columns: 1fr;
+		padding-bottom: 6rem;
+	}
+
+	.left-header-content {
+		.background-design {
+			display: none;
+		}
+	}
+
+	.header-content .left-header-content .image {
+		margin: 0 auto;
+		width: 90%;
+	}
+
+	.right-header-content {
+		//make the right header top of the left header by assigning him first
+		grid-row: 1;
+		width: 90%;
+		margin: 0 auto;
+		.name {
+			font-size: 2.5rem !important;
+		}
+	}
+
+	.control-buttons-container {
+		top: auto;
+		bottom: 0;
+		flex-direction: row;
+		justify-content: center;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 100%;
+		background-color: var(--color-grey-5);
+		.control-button {
+			margin: .3rem 2rem;
+		}
+	}
+}
+
+/////////////////////////////////////////////////////////////////////////////
+
+@media screen and (max-width: 700px) {
+	.main-title {
+		h2 {
+			font-size: 3rem;
+			span {
+				font-size: 3rem;
+			}
+		}
+		.bg-text {
+			font-size: 4rem;
+		}
+	}
+
+	.section {
+		padding: 7rem 3rem;
+	}
+
+	.about-stats {
+		.progress-bars {
+			grid-template-columns: 1fr;
+		}
+	}
+}

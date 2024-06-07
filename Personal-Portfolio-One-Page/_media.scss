@@ -1,0 +1,24 @@
+@media screen and (max-width: 810px) {
+	#projects {
+		grid-template-columns: 1fr;
+	}
+
+	.contact-container {
+		max-height: 50vh; 
+		margin-top: 1rem;
+		padding: 0;
+		h2 {
+			font-size: 2.5rem;
+		}
+		.profile-links-container {
+			flex-direction: column;
+			row-gap: 2rem;
+			#profile-link {
+				margin: 0;
+				&:hover {
+					transform: translateX(10px);
+				}
+			}
+		}
+	}
+}

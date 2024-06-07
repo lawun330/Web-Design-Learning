@@ -1,0 +1,238 @@
+/*importing a custom downloaded font*/
+@font-face {
+    font-family: 'Geraldine Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Geraldine Regular'), url('Geraldine.woff') format('woff');
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  * {
+    scroll-behavior: smooth;
+  }
+}
+
+:root {
+	--background-color: #F2F3F4;
+	--header-nav-bar-color: black;
+	--header-nav-anchor-hover-color: #333333;
+	--box-shadow-color: hsla(180, 100%, 25%, 1);
+	--package-header1-color: #ffa701;
+	--package-header2-color: #e1affd;
+	--package-header3-color: #ea3333;
+	--submit-button-bg-color: black;
+	--submit-button-color: white;
+	--submit-button-hover-color: #333333;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: order-box;
+}
+
+.background-container {
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	margin: 0 auto;
+	background-color: var(--background-color);
+	overflow-y: auto;
+} 
+
+#header {
+	position: fixed;
+	background-color: black;
+	top: 0;
+	left: 0;
+	height: 60px;
+	width: 100%;
+	display: flex;
+	justify-content: flex-end;
+	column-gap: 280px;
+}
+
+/*style the anchored elements first*/
+#nav-bar a{
+	display: block;
+	height: 60px;
+	width: 85px;
+	color: #FFFFFF;
+	background-color: var(--header-nav-bar-color);
+	border-left: 1px solid white;
+	font-family: Lato, sans-serif;
+	font-weight: bold;
+	display: flex; /*each element is a container individually*/
+	justify-content: center;
+	align-items: center;
+	text-decoration: none; /*undo the underline*/
+}
+
+#nav-bar a:hover{
+	background-color: var(--header-nav-anchor-hover-color);
+}
+
+#nav-bar ul{
+	list-style: none; /*remove any bullet or number on the list*/
+	display: flex;
+}
+
+#nav-bar li{
+	text-align: center;
+}
+
+#video-container {
+	margin-top: 90px;
+	display: flex;
+	justify-content: center;
+}
+
+.title-container {
+	display: flex;
+	justify-content: center;
+}
+
+#title {
+	margin-top: 30px;
+	font-family: 'Geraldine Regular', cursive;
+	font-size: 30px;
+	background: linear-gradient(
+		115deg,
+		#1aa7ec,
+		#ca8dfd
+	);
+	padding: 20px;
+	border: 1px solid black;
+	width: fit-content;
+	text-align: center;
+}
+
+/*the three boxes container*/
+#package-choice {
+	margin-top: 30px;
+	height: 180px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	column-gap: 30px;
+}
+
+/*Each box is a container itself*/
+.package-box {
+	position: relative;
+	height: 180px;
+	width: 250px;
+	border: 1px solid black;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+}
+
+/*custom radio*/
+.radio_class{
+	display: none;
+}
+
+.package-box::after {
+	content:"";
+	position: absolute;
+	height: 180px;
+	width: 250px;
+	box-shadow: 0 0 10px 5px var(--box-shadow-color);
+	z-index: -1;
+	transform: scale(0);
+}
+
+.radio_class:checked + .package-box::after {
+	transform: scale(1);
+}
+
+/*color the package-header*/
+.package-header {
+	top: 0;
+	left: 0;
+	background-color: #00ff00;
+	height: 50px;
+	width: 100%;
+	font-family: Lato, sans-serif;
+	font-size: 22px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#legend{
+	background-color: var(--package-header1-color);
+}
+
+#mythic {
+	background-color: var(--package-header2-color);
+}
+
+#mythical-glory {
+	background-color: var(--package-header3-color);
+}
+
+/*the price and list are in a container which is in a box container*/
+.price, .list {
+	margin-top: 10px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	row-gap: 10px;
+}
+
+.form-container {
+	display: flex;
+	justify-content: center;
+}
+
+/*it has requirements class and button*/
+#form {
+	margin-top: 30px;
+	display: flex;
+	flex-direction: column;
+	row-gap: 20px; /*vertical distance between input and submit button*/
+	flex-flow: column wrap;
+	width: fit-content;
+}
+
+/*It has name and email forms*/
+.requirements {
+	display: flex;
+	column-gap: 10px; /*horizontal distance between two <label>s*/
+}
+
+#submit {
+	margin-bottom: 100px;
+	width: 100px;
+	align-self: flex-end;
+	background-color: var(--submit-button-bg-color);
+	color: var(--submit-button-color);
+}
+
+#submit:hover {
+	background-color: var(--submit-button-hover-color);
+}
+
+footer {
+	height: 30px;
+	background-color: black;
+  	color: white;
+	display: flex;
+  	justify-content: flex-start;
+  	align-items: center;
+  	font-size: 0.9em;
+}
+
+/*change the video dimension if there is a limit*/
+@media (max-width: 720px) {
+	video, iframe {
+		width: 100% !important;
+		height: auto !important;
+	}
+}
+

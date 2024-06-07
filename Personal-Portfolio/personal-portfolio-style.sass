@@ -1,0 +1,659 @@
+// @font-face 
+//     font-family: 'Supercell Magic Font'
+//     font-style: normal
+//     font-weight: normal
+//     src: local('Supercell Magic Font'), url('Supercell-Magic-Font-51/Supercell-Magic-Font.ttf') format('ttf')
+
+
+* 
+	margin: 0
+	padding: 0
+	box-sizing: border-box
+	list-style: none
+
+//different code style in SASS
+//::"something" ==> \:"something" 
+\:root
+	--color-primary: #191d2b
+	--color-secondary: #27AE60
+	--color-white: #FFFFFF
+	--color-black: #000
+	--color-grey-0: #f8f8f8
+	--color-grey-1: #dbe1e8
+	--color-grey-2: #b2b3cd
+	--color-grey-3: #6c7983
+	--color-grey-4: #454e56
+	--color-grey-5: #2a2a35
+	--color-grey-6: #12181b
+	--color-button-icon: #b2b3cd
+	//the below is border radius variable
+	--br-sm-2: 14px 
+	--box-shadow-1: 0 3px 15px rgba(0,0,0,.3)
+	--box-shadow-blog-1: 1px 1px 20px rgba(39, 174, 96, 50%)
+	--box-shadow-blog-2: 1px 1px 20px rgba(26, 255, 163, 75%)
+	--box-shadow-blog-3: 1px 4px 15px rgba(26, 255, 163, 100%)
+
+.light-mode
+	--color-primary: #FFFFFF
+	--color-secondary: #00a9bf
+	--color-white: #454e56
+	--color-black: #000
+	--color-grey-0: #f8f8f8
+	--color-grey-1: #6c7983
+	--color-grey-2: #6c7983
+	--color-grey-3: #6c7983
+	--color-grey-4: #454e56
+	--color-grey-5: #c7c6c1
+	--color-grey-6: #12181b
+	--color-button-icon: #fff
+	--box-shadow-blog-1: 1px 1px 20px rgba(0, 200, 255, 50%)
+	--box-shadow-blog-2: 1px 1px 20px rgba(0, 200, 255, 75%)
+	--box-shadow-blog-3: 1px 4px 15px rgba(0, 200, 255, 100%)
+
+body 
+	background-color: var(--color-primary)
+	font-family: 'Supercell Magic Font', sans-serif
+	font-size: 1.1rem
+	color: var(--color-white)
+	transition: all .4s ease-in-out
+
+a 
+	display: inline-block
+	text-decoration: none
+	color: inherit
+	font-family: inherit
+
+header 
+	height: 100vh
+	color: var(--color-white)
+	overflow: hidden
+	font-family: inherit
+	//you can only nest like this in SASS
+	@media screen and (max-width: 600px)
+		min-height: 100vh
+
+section 
+	min-height: 100vh
+	width: 100%
+	position: absolute
+	left: 0
+	top: 0
+	padding: 3rem, 18rem
+
+//off screen and scale 0 to ensure the sections exist but are hidden
+.section
+	transform: translateY(-100%) scale(0)
+	transition: all .4s ease-in-out
+	background-color: var(--color-primary)
+
+.sec1 
+	display: none
+	transform: translateY(0) scale(1)
+
+.sec2 
+	display: none
+	transform: translateY(0) scale(1)
+
+.sec3 
+	display: none
+	transform: translateY(0) scale(1)
+
+.sec4 
+	display: none
+	transform: translateY(0) scale(1)
+
+.sec5
+	display: none
+	transform: translateY(0) scale(1)
+
+.active 
+	display: block
+	animation: scaleAnimation 1s ease-in-out
+	@keyframes scaleAnimation 
+		0%
+			transform: translateY(-100%) scaleY(0)
+		100%
+			transform: translateY(0) scaleY(1)
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//section 1
+//home section
+//header contents 
+.header-content
+	display: grid
+	grid-template-columns: repeat(2, 1fr)
+	min-height: 100vh
+	.left-header-content
+		display: flex 
+		align-items: center
+		position: relative
+		.background-design
+			position: absolute
+			top: 0
+			left: 0 
+			//the width and height are of the one tile of grid for nested class
+			height: 100%
+			width: 65%
+			z-index: -1
+			transition: all .4s ease-in-out
+			background-color: var(--color-secondary)
+			//add the clip-path at '''bennettfeely.com/clippy'''
+			clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%)
+
+		//there is the image div and under it is html img tag
+		.image 
+			border-radius: var(--br-sm-2)
+			height: 80%
+			width: 68%
+			margin-left: 4rem
+			background-color: var(--color-black)
+			transition: all .4s ease-in-out
+			img  
+				width: 100%
+				height: 100%
+				//the image keeps its aspect ratio and fills the given dimension. It is clipped to fit.
+				object-fit: cover
+				transition: all .4s ease-in-out
+				border-radius: var(--br-sm-2)
+				filter: grayscale(100%)
+				&:hover 
+					filter: grayscale(0)
+	.right-header-content
+		display: flex
+		flex-direction: column
+		justify-content: center
+		padding-right: 18rem
+		.name 
+			font-size: 3rem
+			span
+				color: var(--color-secondary)
+		p 
+			margin: 1.5rem 0
+			line-height: 2rem
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//section 2
+//about section has four parts: main-title, about contents, about stats and timeline.
+//main-title class is used across pages
+.main-title
+	text-align: center
+	h2
+		position: relative
+		text-transform: uppercase
+		font-size: 4rem
+		font-weight: 700
+		span
+			color: var(--color-secondary)
+		.bg-text
+			position: absolute
+			top: 50%
+			left: 50%
+			color: var(--color-grey-5)
+			transition: all .4s ease-in-out
+			z-index: -1
+			transform: translate(-50%, -50%)
+			font-size: 6.3rem
+			font-weight: 800
+
+//it has two grids
+.about-container
+	display: grid 
+	grid-template-columns: repeat(2, 1fr)
+	padding-top: 3.5rem
+	padding-bottom: 5rem
+	.left-about-content
+		padding: 0 2rem 0 5rem
+		h4
+			font-size: 2rem
+			text-transform: uppercase
+		p	
+			padding: 1rem
+			line-height: 2rem
+			color: var(--color-grey-1)
+
+	//the right grid has two nested grids
+	.right-about-content
+		display: grid 
+		grid-template-columns: repeat(2, 1fr)
+		grid-gap: 2rem
+		padding-right: 5rem
+		.about-item
+			transition: all .4s ease-in-out
+			border-radius: 5px
+			//box shadow starts taken from outside of border
+			border: 1px solid var(--color-grey-5)
+			box-shadow: 1px 2px 15px rgba(0,0,0,0.1)
+			&:hover
+				//the cursor should not be changed
+				cursor: default
+				//negative value for translating above
+				transform: translateY(-5px)
+				border: 1px solid var(--color-secondary)
+				box-shadow: 1px 4px 15px rgba(0,0,0,.32)
+			.about-text
+				padding: 1.5rem
+				display: flex
+				flex-direction: column
+				.large-text
+					font-size: 3rem
+					font-weight: 700
+					color: var(--color-secondary) 
+				.small-text
+					padding-left: 3rem
+					position: relative
+					text-transform: uppercase
+					font-size: 1.2rem
+					color: var(--color-grey-1)
+					letter-spacing: 2px
+					&::before
+						content: ""
+						position: absolute
+						top: 15px
+						left: 0
+						height: 2px
+						width: 2rem
+						background-color: var(--color-grey-5)
+
+//the progress bars styling
+.about-stats
+	padding: 0 5rem 4rem 5rem
+	.progress-bars
+		//the all progress bars are grouped as a 2-grid-in-row groups
+		display: grid 
+		grid-template-columns:	repeat(2, 1fr)
+		grid-gap: 2rem
+		.progress-bar
+			display: flex 
+			//progress title and progress container are in column
+			flex-direction: column
+			.prog-title
+				text-transform: uppercase
+				font-weight: 500
+			.progress-con
+				//the progress container has progress text and progress bar styling which are in row
+				display: flex 
+				align-items: center
+				.prog-text
+					color: var(--color-grey-2)
+				.progress
+					position: relative
+					height: .45rem
+					width: 100%
+					background-color: var(--color-grey-2)
+					margin-left: 1rem
+					span 
+						position: absolute
+						top: 0
+						left: 0
+						height: 100%
+						width: 0%
+						background-color: var(--color-secondary)
+						transition: all .4s ease-in-out
+					.anxiety
+						width: 70%
+					.depression
+						width: 60%
+					.DID
+						width: 90%
+					.chaotic
+						width: 85%
+					.avoidance
+						width: 77%
+					.rebellious
+						width: 80%
+
+//the work timeline //It has two-pairs grid twice
+.timeline	
+	display: grid 
+	grid-template-columns: repeat(2, 1fr)
+	grid-gap: 2rem
+	padding: 0 5rem 3rem 5rem
+	//each timeline content
+	.timeline-item
+		position: relative
+		padding-left: 3rem
+		//this creates a line
+		border-left: 1px solid var(--color-grey-5)
+		.timeline-icon
+			position: absolute
+			top: 0
+			left: -27px
+			background-color: var(--color-secondary)
+			height: 50px
+			width: 50px
+			border-radius: 50%
+			display: flex 
+			align-items: center
+			justify-content: center
+			i
+				//the size of the icon
+				font-size: 1.3rem
+		//"start - end" thing background styling
+		.timeline-duration
+			padding: .2rem .6rem
+			background-color: var(--color-grey-5)
+			border-radius: 15px
+			display: inline-block
+			font-size: .8rem
+			text-transform: uppercase
+			font-weight: 500
+		h5
+			padding: 1rem 0
+			text-transform: uppercase
+			font-size: 1.3rem
+			font-weight: 600
+			span
+				color: var(--color-grey-2)
+				font-size: 1.2rem
+				font-weight: 500
+		p 	
+			color: var(--color-grey-2)
+
+//this is independent because it is used for both titles under about-stats and timeline
+.sub-title 
+	position: relative
+	padding: 3.5rem 0
+	font-size: 1.4rem
+	text-align: center
+	text-transform: uppercase
+	//the line above the title
+	&::before
+		content: ''
+		position: absolute
+		top: 0
+		left: 50%
+		height: 1px
+		width: 40%
+		background-color: var(--color-grey-5)
+		transform: translateX(-50%)
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//section 3
+//portfolio section has three parts: main-title, portfolio-text and portfolios-container.
+//portfolio text
+.portfolio-text
+	padding: 2rem 0
+	text-align: center
+
+//portfolios container
+.portfolios-container
+	display: grid	
+	grid-template-columns: repeat(3, 1fr)
+	grid-gap: 2rem
+	margin-top: 3rem
+	padding: 0 5rem
+	//styling for each portfolio
+	.portfolio-item
+		position: relative
+		img 
+			height: 300px
+			width: 100%
+			object-fit: cover
+			border-radius: 15px
+		//this is a div containing things, this doesn't act as :hover
+		.hover-item
+			height: 100%
+			width: 100%
+			background-color: var(--color-secondary)
+			position: absolute
+			top: 0
+			left: 0
+			border-radius: 15px
+			display: flex 
+			//the direction should be column between hover-item's' header and icons
+			flex-direction: column
+			justify-content: center
+			align-items: center
+			opacity: 0
+			transform: scale(0)
+			transition: all .4s ease-in-out
+			h3
+				font-size: 1.5rem
+				color: var(--color-white)
+				margin-bottom: 1.5rem
+			.icons 
+				display: flex
+				justify-content: center
+				align-items: center
+				.icon
+					background-color: var(--color-primary)
+					height: 50px
+					width: 50px
+					border-radius: 50%
+					//using flex to center the icon
+					display: flex
+					justify-content: center
+					align-items: center
+					//the margin is used to separate each icon
+					margin: 0 1rem
+					cursor: pointer
+					transition: all .4s ease-in-out
+					i 
+						font-size: 1.5rem
+						color: var(--color-white)
+						//the margin ensure the icon is in the middle
+						margin: 0 1rem
+					//this makes an animation when hovered
+					&:hover
+						background-color: var(--color-white)
+						i
+							color: var(--color-primary)
+
+.portfolio-item:hover .hover-item
+	opacity: 100%
+	transform: scale(1.0)
+	transition: all .4s ease-in-out
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//section 4
+//blogs section has three parts: main-title, blogs-container
+//blogs container
+.blogs-container
+	display: grid 
+	grid-template-columns: repeat(3, 1fr)
+	grid-gap: 2rem
+	margin-top: 3rem
+	padding: 0 5rem
+	//styling for each blog
+	.blog
+		position: relative
+		background-color: var(--color-grey-5)
+		border-radius: 5px
+		box-shadow: var(--box-shadow-blog-1)
+		transition: all .4s ease-in-out
+		&:hover
+			box-shadow: var(--box-shadow-blog-2)
+			transform: translateY(-5px)
+			transition: all .4s ease-in-out
+			img 
+				filter: grayscale(0)
+				transform: scale(1.1)
+				box-shadow: var(--box-shadow-blog-3)
+		img 
+			height: 300px
+			width: 100%
+			object-fit: cover
+			border-top-left-radius: 5px
+			border-top-right-radius: 5px
+			filter: grayscale(100%)
+			transition: all .4s ease-in-out
+		.blog-text
+			margin-top: -7px
+			padding: 1.1rem
+			border-top: 8px solid var(--color-secondary)
+			h4 
+				font-size: 1.5rem
+				margin-bottom: 0.7rem
+				transition: all .4s ease-in-out
+				cursor: pointer
+				&:hover 
+					color: var(--color-secondary)
+			p 
+				color: var(--color-grey-2)
+				line-height: 2rem
+				padding-bottom: 1rem
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//section 5
+//contact section includes: main-title and contact-container (which has left contact and right contact divs)
+.contact-container
+	display: flex 
+	padding: 3.5rem 5rem 0 5rem
+	.left-contact
+		flex: 2 
+		h4 
+			margin-top: 1rem
+			font-size: 2rem
+			text-transform: uppercase
+		p 
+			margin: 1rem 0
+			line-height: 2rem 
+		.contact-info
+			.contact-item
+				display: flex 
+				justify-content: space-between
+				align-items: center
+				.icon
+					//grid is used so two elements under icon div (i and text) are in aligned
+					display: grid
+					grid-template-columns: 40px 1fr
+					i
+						//flex is used to ensure the icon is in the center
+						display: flex
+						align-items: center
+						font-size: 1.3rem
+				p 
+					margin: 0.3rem 0 !important
+					padding: 0 !important
+		.contact-apps
+			display: flex 
+			margin-top: 2rem
+			column-gap: 1rem
+			a 
+				display: flex 
+				justify-content: center
+				align-items: center
+				background-color: var(--color-grey-5)
+				color: var(--color-white)
+				cursor: pointer
+				height: 50px
+				width: 50px
+				border-radius: 50%
+				transition: all .4s ease-in-out
+				i 
+					font-size: 1.3rem
+				&:hover 
+					background-color: var(--color-secondary)
+					i 
+						color: var(--color-primary)
+	.right-contact
+		flex: 3
+		margin-left: 3rem
+		.input-control
+			margin: 1.5rem 0
+			input, textarea 
+				border-radius: 30px
+				width: 100%
+				font-size: inherit
+				font-weight: inherit
+				font-family: inherit
+				padding: .8rem 1.1rem
+				outline: none
+				border: none
+				resize: none
+				background-color: var(--color-grey-5)
+				color: var(--color-white)
+		//this id input-control represents NAME and EMAIL input fields
+		#input-control
+			display: flex
+			\:last-child
+				margin-left: 1.5rem
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//single button
+//container makes the text and icon in a compact group
+.single-button-container
+	display: flex 
+	align-self: flex-start
+
+//button in home page and about page
+.single-button 
+	position: relative
+	border-radius: 30px
+	color: inherit
+	border: 1px solid var(--color-secondary)	
+	font-weight: 600
+	display: flex
+	align-items: center
+	overflow: hidden
+	.single-button-text
+		padding: 0 2rem
+	.single-button-icon
+		background-color: var(--color-secondary)
+		border-radius: 50%
+		padding: 1.1rem
+	//create the filling style
+	&::before
+		content: ''
+		position: absolute
+		top: 0
+		right: 0
+		transform: translateX(100%)
+		transition: all .4s ease-out
+		z-index: -1
+	&:hover 
+		&::before
+			height: 100%
+			width: 100%
+			background-color: var(--color-secondary)
+			transform: translateX(0)
+			transition: all .4s ease-out
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//pairs of buttons to navigate the pages
+.control-buttons-container
+	position: fixed
+	z-index: 10
+	top: 25%
+	right: 0.75%
+	display: flex
+	flex-direction: column
+	align-items: center
+	justify-content: center
+	transform: traslateY(-50%)
+	.active-button
+		background-color: var(--color-secondary)!important
+		transition: all .4s ease-in-out
+	.control-button
+		padding: 1rem
+		//cursor property can change the mouse cursor into different shapes
+		cursor: pointer
+		background-color: var(--color-grey-4)
+		height: 45px
+		width: 45px
+		border-radius: 50%
+		display: flex
+		justify-content: center
+		align-items: center
+		margin: .7rem 0
+		box-shadow: var(--box-shadow-1)
+		i 
+			font-size: 1rem
+			color: var(--color-button-icon)
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//theme control button
+.theme-button
+	position: fixed
+	top: 5%
+	right: 0.75% 
+	height: 55px
+	width: 55px
+	border-radius: 50%
+	background-color: var(--color-grey-4)
+	cursor: pointer
+	display: flex 
+	justify-content: center
+	align-items: center
+	transition: all .1s ease-in-out
+	&:active
+		transform: translateY(-5px)
+	i 
+		font-size: 1.2rem
+		color: var(--color-button-icon)
+		pointer-events: none
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//media query
+@import "media"
