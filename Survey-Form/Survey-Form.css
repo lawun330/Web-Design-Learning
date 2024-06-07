@@ -1,0 +1,106 @@
+/*declare variables globally*/
+:root {
+	--color-frog: rgba(153, 198, 142, 1);
+	--color-viking: #4ADEDE;
+	--color-darker-viking: #4a96fc;
+}
+
+/*select all elements and include the padding and border in an element's total width and height*/
+* {
+	box-sizing: border-box;
+}
+
+#background-color {
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width:  100%;
+	z-index: -1;
+	background-image: linear-gradient(
+		110deg,
+		rgba(152, 255, 152, 0.9),
+		rgba(152, 255, 202, 0.7)
+	),
+	url(https://images2.minutemediacdn.com/image/upload/c_crop,w_1915,h_1077,x_0,y_0/c_fill,w_720,ar_16:9,f_auto,q_auto,g_auto/images/voltaxMediaLibrary/mmsport/dbltap_en_international_web/01fwyk2nx6dzrxv9s5jx.jpg);
+	background-size: cover; /*use to make a cover*/
+	background-repeat: no-repeat; /*no repeatation of image*/
+	background-position: center; /*the image is centered*/
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	overflow: auto;
+}
+
+h1, p {
+	font-family: sans-serif;
+	font-size: 20;
+	line-height: 1.5;
+	text-align: center;
+	margin: 15px auto 10px auto;
+}
+
+#title {
+	position: relative;
+	font-weight: 600;
+}
+
+#description {
+	font-family: cursive;
+}
+
+#background-color2 {
+	background-color: var(--color-frog);
+	opacity: 0.8;
+	max-width: 22% ;
+	padding: 0.5rem 1rem; 
+	border-radius: 0.25rem;
+	margin-top: 10px;
+}
+
+/*all things container*/
+#survey-form {
+	display: flex;
+	flex-direction: column;
+	row-gap: 5px; /*space between contained items*/
+	opacity: 1;
+}
+
+.button-input {
+	display: flex;
+	flex-direction: row;
+}
+
+/*only label should have block display*/
+/*adjust the position of label will control checkboxes, using in input will only move the box*/
+/*if block display is used with input,each checkbox and label will be columned*/	
+
+.checkbox-input label{
+	display:  block;
+}
+	
+.checkbox-input input {
+	vertical-align: middle; /*checkboxes aligned with text beside*/
+}
+
+option {
+	padding: 8px 16px;
+	border: 1px solid transparent;
+	border-color: transparent transparent black transparent;
+}
+
+
+#submit {
+	display: block;
+	align-self: flex-end;
+	width: 30%;
+	background-color: var(--color-viking);
+}
+
+#submit:hover {
+    animation-name: change;
+    animation-duration: 100ms;
+    animation-fill-mode: forwards;
+}
+
+ @keyframes change { 100% {background-color: var(--color-darker-viking);} }

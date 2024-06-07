@@ -1,0 +1,70 @@
+
+/*background color*/
+  #main {
+    position:fixed; 
+    height: 100%; /*the color must be the same everywhere*/
+    width: 100%;
+    background-color: #99C0CB;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+  
+  header {
+    position: relative;
+    height: 100px;
+    width: 100%;
+    top: 0;
+    left:  0;
+    background-color: hsl(180,20%,40%);
+    font-size: 20px; /*all texts within header has 20px font-size*/ /*the reason for not using h2 is because we don't want bold*/
+    text-align: left;
+    padding: 1px 0 0 10px;
+  }
+  
+  #title {
+    font-size: 32px; /*change the h1 font-sizes to 32px*/ 
+    font-family: sans-serif; 
+    text-transform: uppercase;
+    margin: 10px 0 0 0; /*h1's margin to header*/
+    line-height: 30px; /*line height between two headers*/
+  }
+
+/*image-div has image and image caption*/
+  #img-div { 
+    position: relative; /*the img-div section is positioned relative to previous <header> and it is not within <header>*/
+    margin: 0 0 0 0; 
+    display: flex; /*image and caption are now in a flex box*/
+    flex-direction: column;  /*image and caption are put in a column*/
+    align-items: center; /*used instead of justify-content since flex-direction changes*/
+  }
+
+  #image {
+    display: block;
+    height: auto;
+    max-width: 50%;
+  }
+  
+  #img-caption {
+    font-size: 15px;
+  }
+
+/*tribute-info has paragraph and time and superscript elements and tribute-link*/
+  #tribute-info {
+    max-width: 700px;
+    margin: 50px auto 50px auto;
+    text-align: left;
+  }
+
+  #tribute-link {
+    color:  #0000FF;
+  }
+
+/*change color when the link is hovered with the use of "animation"*/
+  #tribute-link:hover {
+    animation-name: change;
+    animation-duration: 100ms;
+    animation-fill-mode: forwards;
+  }
+
+  @keyframes change { 100% {color: #FF0000;} }
+  
