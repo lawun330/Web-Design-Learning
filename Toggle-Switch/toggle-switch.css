@@ -1,0 +1,82 @@
+/*This project is at https://css-tricks.com/7-practical-uses-for-the-before-and-after-pseudo-elements-in-css/*/
+
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  background-color: #08f;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: -1;
+}
+
+p {
+  font-family: sans-serif;
+  font-size: 32px;
+}
+
+.container_background {
+  height: 40px;  
+  width: 75px;
+  border-radius: 50px;
+  background: linear-gradient(to right, #1560bd, #e90);
+  display: flex;
+  align-items: flex-end;
+}
+
+/*invisible layer for adjusting position*/
+.container {
+  position: relative;
+  height: 16px;
+  width: 16px;    
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*hide the checkbox*/
+input {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  -webkit-appearance: none; /* Safari */
+  cursor: pointer; /* Show it's an interactive element */
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}
+
+/*the space between ball and container_background*/
+input::before {
+  background: #000;
+  border-radius: 50px;
+  content: "";
+  height: 25px; /*62.5% of container_background*/
+  width: 60.75px ; /*81% of container_background*/
+  position: absolute;
+  transform: translate(7px, -50%); /* Move styling to the center of the element */
+}
+
+/*create a ball inside*/
+input::after {
+  background: linear-gradient(to right, orange, #8e2de2);
+  border-radius: 50px;
+  content: "";
+  height: 25px;
+  opacity: 0.6;
+  position: absolute;
+  transform: translate(7px, -50%);
+  transition: all .4s;
+  width: 25px;
+}
+
+/*make sure the ball moves*/
+input:checked::after {
+  opacity: 1;
+  transform: translate(170%, -50%);
+}
